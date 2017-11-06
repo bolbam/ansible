@@ -1,0 +1,14 @@
+---
+- file:
+    path: /var/lib/pulp
+    state: present
+    owner: apache
+    group: apache
+    mode: 0755
+
+- mount:
+    path: /var/lib/pulp
+    src: ntap-phx1-c01-devqa01-nfs01a.storage.phx1.redhat.com:/itpnt_brew_pulp_docker_nfs_sm_clone/
+    state: present
+  tags: 
+    - mount

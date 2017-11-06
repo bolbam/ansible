@@ -1,0 +1,25 @@
+---
+pulprpms: 
+ - pulp-server: 2.8.0.2-1.el7sat
+ - pulp-selinux: 2.8.0.2-1.el7sat
+ - pulp-admin-client: 2.8.0.2-1.el7sat
+ - pulp-docker-plugins: 2.0.0.2-1.el7sat
+ - pulp-docker-admin-extensions: 2.0.0.2-1.el7sat
+ - python-pulp-docker-common: 2.0.0.2-1.el7sat
+ - python-crane: 2.0.0.2-2.el7sat
+ - qpid-cpp-server: 0.30-9.el7
+ - qpid-cpp-server-linearstore: 0.30-9.el7
+ - qpid-cpp-client: 0.30-9.el7
+ - python-gofer-qpid: 2.6.8-1.el7sat
+ - qpid-tools: 0.30-5.el7
+ - python-qpid-qmf: 0.30-5.el7
+ - qpid-proton-c: 0.9-13.el7
+ - mod_xsendfile: 0.12-10.el7sat
+ - python-bson: 3.2-1.el7sat
+ - python-pymongo: 3.2-1.el7sat
+ - python-pymongo-gridfs: 3.2-1.el7sat
+ - python-blinker: 1.3-3.el7ui
+ - python-mongoengine: 0.10.5-2.el7sat
+ - saslwrapper: 0.22-5.el7sat
+ - python-saslwrapper: 0.22-5.el7sat
+ - python-nectar: 1.5.1-3.el7sat

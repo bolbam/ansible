@@ -1,0 +1,22 @@
+---
+- name: configure yum repo
+  yum_repository:
+      name: 'pnt-pulp-el7'
+      description: 'brew-pulp repository'
+      baseurl: "{{ pulp_base }}/pnt-pulp-el7/"
+      gpgcheck: 0
+      metadata_expire: 0
+      state: present
+  tags:
+      - install
+
+- name: install pulp packages
+  yum:
+      name: "{{ item }}"
+      state: present
+  with_items:
+      - "{{ pulprpms }}"
+  tags:
+      - install
+
+

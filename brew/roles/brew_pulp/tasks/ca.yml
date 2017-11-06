@@ -1,0 +1,18 @@
+- name: copy certificate to host
+  copy:
+    src: files/cert-RH-IT-pki-ca-chain
+    dest: /etc/pki/ca-trust/source/anchors/cert-RH-IT-pki-ca-chain
+    owner: root
+    group: root
+    mode : 0644
+    setype: cert_t
+    seuser: unconfined_u
+    serole: object_r
+  tags:
+    - certificate
+
+- name: Rebuild the CA-trust database
+- command: `update-ca-trust enable; update-ca-trust export`
+  tags:
+    - certificate
+
