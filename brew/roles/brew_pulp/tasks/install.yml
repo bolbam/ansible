@@ -4,6 +4,7 @@
       name: 'pnt-pulp-el7'
       description: 'brew-pulp repository'
       baseurl: "{{ pulp_base }}/pnt-pulp-el7/"
+      enabled: 1
       gpgcheck: 0
       metadata_expire: 0
       state: present

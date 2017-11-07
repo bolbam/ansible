@@ -12,7 +12,7 @@
     - certificate
 
 - name: Rebuild the CA-trust database
-- command: `update-ca-trust enable; update-ca-trust export`
+  command: update-ca-trust enable; update-ca-trust export
   tags:
     - certificate
 

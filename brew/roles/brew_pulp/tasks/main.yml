@@ -1,4 +1,6 @@
 ---
 # tasks file for brew_pulp
 - include: tasks/install.yml
+- include: tasks/ca.yml
+- include: tasks/files.yml
 #- include: tasks/mount.yml

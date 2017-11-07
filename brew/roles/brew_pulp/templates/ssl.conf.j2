@@ -97,14 +97,14 @@ SSLCipherSuite HIGH:MEDIUM:!aNULL:!MD5:!SEED:!IDEA
 # the certificate is encrypted, then you will be prompted for a
 # pass phrase.  Note that a kill -HUP will prompt again.  A new
 # certificate can be generated using the genkey(1) command.
-SSLCertificateFile <%= @tls_cert_file %>
+SSLCertificateFile {{tls_cert_file}}
 
 #   Server Private Key:
 #   If the key is not combined with the certificate, use this
 #   directive to point at the key file.  Keep in mind that if
 #   you've both a RSA and a DSA private key you can configure
 #   both in parallel (to also allow the use of DSA ciphers, etc.)
-SSLCertificateKeyFile <%= @tls_key_file %>
+SSLCertificateKeyFile {{tls_key_file}}
 
 #   Server Certificate Chain:
 #   Point SSLCertificateChainFile at a file containing the
@@ -113,7 +113,7 @@ SSLCertificateKeyFile <%= @tls_key_file %>
 #   the referenced file can be the same as SSLCertificateFile
 #   when the CA certificates are directly appended to the server
 #   certificate for convinience.
-SSLCertificateChainFile <%= scope.lookupvar('brew_pulp::ca::rhit_ca') %>
+SSLCertificateChainFile {{ssl_cert_chain}}
 
 #   Certificate Authority (CA):
 #   Set the CA certificate verification path where to find CA

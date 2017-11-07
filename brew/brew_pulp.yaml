@@ -1,5 +1,5 @@
 ---
-- hosts: devlab
+- hosts: dev
   become: true
   roles:
     - brew_pulp

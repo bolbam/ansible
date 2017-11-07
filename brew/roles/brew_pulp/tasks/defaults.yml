@@ -1,0 +1,37 @@
+- name: Default directory creations
+  file:
+    dest: /var/lib/crane/metadata/both
+    state: directory
+- file:
+    src: /tmp
+    #src: /var/lib/pulp/published/docker/{{item}}/app
+    dest: /var/lib/crane/metadata/both/{{item}}
+    state: link
+  with_items:
+    - v1
+    - v2
+- file:
+    src: /files/ca.crt
+    dest: /etc/pki/tls/certs/ca.crt
+    owner: root
+    group: root
+    mode: 0644
+- file:
+    src: /files/ca.crt
+    dest: {{tls_cert_file}}
+    owner: root
+    group: root
+    mode: 0644
+
+- template:
+    src: templates/server.conf.j2
+    dest: /etc/pulp/server.conf
+    owner: root
+    group: apache
+    mode: 0644
+- template:
+    src: templates/ssl.conf.j2
+    dest: /etc/httpd/conf.d/ssl.conf
+    owner: root
+    group: root
+    mode: 0644

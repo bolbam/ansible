@@ -1,1 +1,9 @@
 pulp_base: 'http://pulp-gca03.util.phx1.redhat.com/pulp/repos/re'
+pulpdev: 'brew-pulp-docker01.web.dev.int.devlab.redhat.com'
+dbhostname: 'tstmongodb01.web.dev.int.phx1.redhat.com:27017'
+dbpasswd: 'dockerregistry'
+
+tls_cert_file: '/etc/pki/tls/certs/dummy.crt'
+tls_key_file: '/etc/pki/tls/private/dummy.key'
+ssl_cert_chain: '/etc/pki/ca-trust/source/anchors/dummy-cert-RH-IT-pki-ca-chain'
+
