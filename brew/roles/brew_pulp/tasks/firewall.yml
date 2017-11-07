@@ -1,12 +1,24 @@
 ---
-- iptables_raw:
-    name: allow_tcp_80
-    rules: '-A INPUT -p tcp -m tcp --dport 80 -j ACCEPT'
+- iptables:
+    chain: INPUT
+    table: filter
+    jump: ACCEPT
+    protocol: tcp
+    destination: 80
+    comment: 'Accept all HTTP traffic'
 
-- iptables_raw:
-    name: allow_tcp_443
-    rules: '-A INPUT -p tcp -m tcp --dport 443 -j ACCEPT'
+- iptables:
+    chain: INPUT
+    table: filter
+    jump: ACCEPT
+    protocol: tcp
+    destination: 443
+    comment: 'Accept all HTTPS traffic'
 
-- iptables_raw:
-    name: allow_tcp_8888
-    rules: '-A INPUT -p tcp -m tcp --dport 8888 -j ACCEPT'
+- iptables:
+    chain: INPUT
+    table: filter
+    jump: ACCEPT
+    protocol: tcp
+    destination: 8888
+    comment: 'Accept all Crane traffic'
