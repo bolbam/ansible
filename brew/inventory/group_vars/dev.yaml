@@ -7,3 +7,4 @@ tls_cert_file: '/etc/pki/tls/certs/dummy.crt'
 tls_key_file: '/etc/pki/tls/private/dummy.key'
 ssl_cert_chain: '/etc/pki/ca-trust/source/anchors/dummy-cert-RH-IT-pki-ca-chain'
 
+nfs_mount: 'ntap-phx1-c01-devqa01-nfs01a.storage.phx1.redhat.com:/itpnt_brew_pulp_docker_nfs_sm_clone'

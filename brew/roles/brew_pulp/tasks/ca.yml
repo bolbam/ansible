@@ -16,3 +16,29 @@
   tags:
     - certificate
 
+- file:
+    src: /files/ca.crt
+    dest: /etc/pki/tls/certs/ca.crt
+    owner: root
+    group: root
+    mode: 0644
+  tags:
+    - certificate
+
+- file:
+    src: /files/dummy.crt
+    dest: {{tls_cert_file}}
+    owner: root
+    group: root
+    mode: 0644
+  tags:
+    - certificate
+
+- file:
+    src: /files/dummy.crt
+    dest: {{tls_key_file}}
+    owner: root
+    group: root
+    mode: 0644
+  tags:
+    - certificate

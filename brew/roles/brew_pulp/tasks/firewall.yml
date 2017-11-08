@@ -26,12 +26,19 @@
 - name: IPTABLES rule
   lineinfile: 
     dest=/etc/sysconfig/iptables
-    regexp="^-A INPUT -p "{{item.protocol}}" -m "{{item.protocol}}" --dport "{{item.port}}" -j ACCEPT$"
-    line="-A INPUT -p "{{item.protocol}}" -m "{{item.protocol}}" --dport "{{item.port}}" -j ACCEPT"
+    regexp="^-A INPUT -p tcp -m tcp --dport "{{item}}" -j ACCEPT$"
+    line="-A INPUT -p tcp -m tcp --dport "{{item}}" -j ACCEPT"
     insertafter="^:INPUT ACCEPT \[\d*:\d*\]$"
   with_items:
-    - "{{ protocol: tcp, port: 80 }}"
-    - "{{ protocol: tcp, port: 443 }}"
-    - "{{ protocol: tcp, port: 8888 }}"
-  notify:
-    - restart iptables
+    - 80
+    - 443
+    - 8888 
+    - 5672
+  tags:
+    - iptables
+- name: restart iptables
+  service:
+    name: iptables
+    state: started
+  tags:
+    - iptables

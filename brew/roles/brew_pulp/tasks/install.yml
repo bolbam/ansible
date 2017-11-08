@@ -1,5 +1,5 @@
 ---
-- name: configure yum repo
+- name: Create yum repo file
   yum_repository:
       name: 'pnt-pulp-el7'
       description: 'brew-pulp repository'
@@ -19,5 +19,3 @@
       - "{{ pulprpms }}"
   tags:
       - install
-
-

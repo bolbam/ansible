@@ -1,0 +1,68 @@
+- name: Pulp server.conf config
+  template:
+    src: templates/server.conf.j2
+    dest: /etc/pulp/server.conf
+    owner: root
+    group: apache
+    mode: 0644
+  tags:
+    - configure
+
+- name: Pulp http config
+  template:
+    src: templates/pulp.conf.j2
+    dest: /etc/httpd/conf.d/pulp.conf
+    owner: root
+    group: apache
+    mode: 0644
+  tags:
+    - configure
+
+- name: httpd ssl config
+- template:
+    src: templates/ssl.conf.j2
+    dest: /etc/httpd/conf.d/ssl.conf
+    owner: root
+    group: root
+    mode: 0644
+  tags:
+    - configure
+
+- name: Crane config
+- template:
+    src: templates/crane.conf.erb.snowflake
+    dest: /etc/crane.conf
+    owner: root
+    group: root
+    mode: 0644
+  tags:
+    - configure
+- name: copy pulp_docker.conf
+  copy:
+    src: files/pulp_docker.conf
+    dest: /etc/httpd/conf.d/pulp_docker.conf
+    owner: root
+    group: root
+    mode : 0644
+  tags:
+    - configure
+
+- name: copy crane.conf
+  copy:
+    src: files/apache_crane.conf
+    dest: /etc/httpd/conf.d/crane.conf
+    owner: root
+    group: root
+    mode : 0644
+  tags:
+    - configure
+
+- name: copy qpidd
+  copy:
+    src: files/qpidd.conf
+    dest: /etc/qpid/qpidd.conf
+    owner: root
+    group: root
+    mode : 0644
+  tags:
+    - configure

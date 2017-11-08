@@ -1,0 +1,34 @@
+# requires directory and files for brew-pulp
+- name: Default directory creations
+  file:
+    dest: /var/lib/crane/metadata/both
+    state: directory
+
+- file:
+    src: /var/lib/pulp/published/docker/{{item}}/app
+    dest: /var/lib/crane/metadata/both/{{item}}
+    state: link
+  with_items:
+    - v1
+    - v2
+
+- file:
+    dest: {{item}}
+    state: directory
+    owner: apache
+    group: apache
+    mode: 0755
+  with_items:
+    - /var/lib/pulp/published/docker/both
+    - /var/lib/pulp/published/docker/both/v1
+    - /var/lib/pulp/published/docker/both/v2
+
+- file:
+    src: /var/lib/pulp/published/docker/both/{{item}}
+    dest: /var/lib/pulp/published/docker/{{item}}/app
+    state: link
+    owner: apache
+    group: apache
+  with_items:
+    - v1
+    - v2
