@@ -3,4 +3,5 @@
 - include: tasks/install.yml
 - include: tasks/ca.yml
 - include: tasks/files.yml
+- include: tasks/firewall.yml
 #- include: tasks/mount.yml

@@ -1,24 +1,37 @@
 ---
-- iptables:
-    chain: INPUT
-    table: filter
-    jump: ACCEPT
-    protocol: tcp
-    destination: 80
-    comment: 'Accept all HTTP traffic'
+#- iptables:
+#    chain: INPUT
+#    table: filter
+#    jump: ACCEPT
+#    protocol: tcp
+#    destination: 80
+#    comment: 'Accept all HTTP traffic'
 
-- iptables:
-    chain: INPUT
-    table: filter
-    jump: ACCEPT
-    protocol: tcp
-    destination: 443
-    comment: 'Accept all HTTPS traffic'
+#- iptables:
+#    chain: INPUT
+#    table: filter
+#    jump: ACCEPT
+#    protocol: tcp
+#    destination: 443
+#    comment: 'Accept all HTTPS traffic'
 
-- iptables:
-    chain: INPUT
-    table: filter
-    jump: ACCEPT
-    protocol: tcp
-    destination: 8888
-    comment: 'Accept all Crane traffic'
+#- iptables:
+#    chain: INPUT
+#    table: filter
+#    jump: ACCEPT
+#    protocol: tcp
+#    destination: 8888
+#    comment: 'Accept all Crane traffic'
+
+- name: IPTABLES rule
+  lineinfile: 
+    dest=/etc/sysconfig/iptables
+    regexp="^-A INPUT -p "{{item.protocol}}" -m "{{item.protocol}}" --dport "{{item.port}}" -j ACCEPT$"
+    line="-A INPUT -p "{{item.protocol}}" -m "{{item.protocol}}" --dport "{{item.port}}" -j ACCEPT"
+    insertafter="^:INPUT ACCEPT \[\d*:\d*\]$"
+  with_items:
+    - "{{ protocol: tcp, port: 80 }}"
+    - "{{ protocol: tcp, port: 443 }}"
+    - "{{ protocol: tcp, port: 8888 }}"
+  notify:
+    - restart iptables
